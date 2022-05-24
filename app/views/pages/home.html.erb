@@ -5,8 +5,8 @@
       <p>Change your life and learn to play piano.</p>
       <div class="container">
         <div class="row mx-auto col-md-6">
-          <%= simple_form_for :search, url: root_path, method: "GET", html: { class: 'form-inline' } do |f| %>
-            <%= f.input :search, input_html: { placeholder: "Piano", value: ""} %>
+          <%= simple_form_for :search, url: instruments_path, method: "GET" do |f| %>
+            <%= f.input :instrument_type, input_html: { placeholder: "Piano", value: ""} %>
             <%= f.submit "Search", class: "btn btn-success rounded" %>
           <% end %>
         </div>
