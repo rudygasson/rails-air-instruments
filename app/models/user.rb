@@ -6,5 +6,5 @@ class User < ApplicationRecord
 
   has_many :instruments, dependent: :destroy
   has_many :bookings, dependent: :destroy
-  has_many :instruments, through: :booking
+  # has_many :instruments, through: :bookings
 end
