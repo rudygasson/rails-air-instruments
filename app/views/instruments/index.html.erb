@@ -1,12 +1,18 @@
 <div class="container">
-  <h1>Available Instruments: <%= @search_term %></h1>
-  <% @filtered_instruments.each do |instrument| %>
-    <div class="container">
-      <h2><%= instrument.model %></h2>
-      <%#= TODO: link_to instrument.model, instrument_path(instrument) %>
-      <p><%= instrument.location %></p>
-      <p><%= instrument.description %></p>
-      <p><%= instrument.price_per_day %> EUR/Day</p>
-    </div>
+  <% if @filtered_instruments.count > 0 %>
+    <h1>Available instruments for "<%= @search_term %>"</h1>
+    <% @filtered_instruments.each do |instrument| %>
+      <div class="container">
+        <h2><%= instrument.model %></h2>
+        <%#= TODO: link_to instrument.model, instrument_path(instrument) %>
+        <h3><%= instrument.instrument_type %></h3>
+        <p><%= instrument.location %></p>
+        <p><%= instrument.description %></p>
+        <p><%= instrument.price_per_day %> EUR/Day</p>
+      </div>
+    <% end %>
+  <% else %>
+    <h1>Sorry, no instruments found that match "<%= @search_term %>"</h1>
   <% end %>
+  <%= link_to "Home", root_path %>
 </div>
