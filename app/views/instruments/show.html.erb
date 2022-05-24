@@ -7,7 +7,7 @@
   <p>Price: <%= @instrument.price_per_day %></p>
   <p>Location: <%= @instrument.location %></p>
   <p>Image: <%= @instrument.image %></p>
-
+  <br>
   <%= link_to "Book now", new_instrument_booking_path(@instrument), { class: "btn btn-primary" } %>
   <br>
   <%= link_to "Back to instrument list", instruments_path %>
