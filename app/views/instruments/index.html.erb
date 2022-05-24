@@ -1,0 +1,6 @@
+<div class="container mt-3">
+  <h1>Instrument list</h1>
+  <% @instruments.each do |instrument| %>
+    <p><%= instrument.instrument_type %> - <%= instrument.model %></p>
+  <% end %>
+</div>
