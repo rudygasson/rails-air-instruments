@@ -1,4 +1,7 @@
 class InstrumentsController < ApplicationController
+  before_action :authenticate_user!
+  skip_before_action :authenticate_user!, only: [:index, :show]
+
   def index
     @instruments = Instrument.all
     @search_term = params[:search][:instrument_type]
