@@ -6,6 +6,7 @@ class InstrumentsController < ApplicationController
     @instruments = Instrument.all
     @search_term = params[:search][:instrument_type]
     @filtered_instruments = @instruments.where('lower(instrument_type) like ?', "%#{@search_term.downcase}%")
+    $search_path = "/instruments?search%5Binstrument_type%5D=#{@search_term}&commit=Search"
   end
 
   def show
