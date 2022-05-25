@@ -14,12 +14,32 @@ class InstrumentsController < ApplicationController
   end
 
   def new
+    @user = current_user
+    @instrument = Instrument.new
   end
 
   def create
+    @user = current_user
+    @instrument = Instrument.new(instrument_params)
+    @instrument.user = @user
+    if @instrument.save
+      redirect_to instrument_path(@instrument)
+    else
+      render(:new, status: :unprocessable_entity)
+    end
   end
 
   # private
+
+  def instrument_params
+    params.require(:instrument).permit(
+      :instrument_type,
+      :model,
+      :description,
+      :location,
+      :price_per_day
+    )
+  end
 
   # def set_instrument
   #   @instrument = Instrument.find(params[:id])
