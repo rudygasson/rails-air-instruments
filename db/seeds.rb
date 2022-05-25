@@ -12,10 +12,10 @@ User.delete_all
 
 puts 'All user instances have been deleted'
 
-10.times do
+100.times do
   user = User.create(email: Faker::Internet.email, password: '123456')
   rand(0..3).times do
-    instrument = Instrument.new(instrument_type: Faker::Music.instrument, model: Faker::Music.chord, price_per_day: rand(20..100).to_f, location: 'Berlin')
+    instrument = Instrument.new(instrument_type: Faker::Music.instrument, model: Faker::Drone.name, description: Faker::Hipster.paragraph(sentence_count: 2), price_per_day: rand(20..100), location: 'Berlin')
     instrument.user = user
     instrument.save
   end
