@@ -1,14 +1,21 @@
 <div class="container mt-3">
-  <h1><%= @instrument.instrument_type %> - <%= @instrument.model %></h1>
+  <div class="row justify-content-center">
+    <div class="col-12 col-sm-4">
+      <div class="show-instrument">
 
-  <p>Type: <%= @instrument.instrument_type %></p>
-  <p>Model: <%= @instrument.model %></p>
-  <p>Description: <%= @instrument.description %></p>
-  <p>Price: <%= @instrument.price_per_day %></p>
-  <p>Location: <%= @instrument.location %></p>
-  <p>Image: <%= @instrument.image %></p>
-  <br>
-  <%= link_to "Book now", new_instrument_booking_path(@instrument), { class: "btn btn-success" } %>
-  <br>
-  <%= link_to "Back to instrument list", $search_path %>
+        <h1><%= @instrument.instrument_type %> - <%= @instrument.model %></h1>
+
+        <p>Type: <%= @instrument.instrument_type %></p>
+        <p>Model: <%= @instrument.model %></p>
+        <p>Description: <%= @instrument.description %></p>
+        <p>Price: <%= @instrument.price_per_day %></p>
+        <p>Location: <%= @instrument.location %></p>
+        <p>Image: <%= @instrument.image %></p>
+        <br>
+        <%= link_to "Book now", new_instrument_booking_path(@instrument), { class: "btn btn-flat-show" } %>
+        <br>
+        <%= link_to "Back to instrument list", $search_path %>
+      </div>
+    </div>
+  </div>
 </div>
