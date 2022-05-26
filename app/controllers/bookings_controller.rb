@@ -7,7 +7,7 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     @booking.instrument = @instrument
     if @booking.save
-      redirect_to root_path
+      redirect_to profile_path(current_user)
     else
       render('instruments/show', status: :unprocessable_entity)
     end
