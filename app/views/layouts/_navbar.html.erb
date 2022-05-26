@@ -14,21 +14,18 @@
           <li class="nav-item active">
             <%= link_to "Home", root_path, class: "nav-link" %>
           </li>
+          <% if user_signed_in? %>
           <li class="nav-item">
             <%= link_to "Add an instrument", new_instrument_path, class: "nav-link" %>
           </li>
-          <li class="nav-item">
-            <% if user_signed_in? %>
-              <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link"  %>
-            <% else %>
-              <div class="container p-0 d-flex justify-content-between">
-                <%= link_to 'Login', new_user_session_path, class: "nav-link" %>
-                <span class="nav-link"></span>
-                <%= link_to 'Register', new_user_registration_path, class: "btn btn-success rounded" %>
-              </div>
-            <% end %>
-
-          </li>
+            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "nav-link"  %>
+          <% else %>
+            <div class="container p-0 d-flex justify-content-between">
+              <%= link_to 'Log in', new_user_session_path, class: "nav-link" %>
+              <span class="nav-link"></span>
+              <%= link_to 'Register', new_user_registration_path, class: "btn btn-success rounded" %>
+            </div>
+          <% end %>
           <li class="nav-item dropdown">
             <%# image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
