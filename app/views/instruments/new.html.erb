@@ -1,5 +1,4 @@
 <div class="container">
-<<<<<<< HEAD
   <div class="row justify-content-center">
     <div class="col-12 col-sm-4">
       <div class="form-add">
@@ -17,17 +16,4 @@
       </div>
     </div>
   </div>
-=======
-  <h1>Add a new instrument to rent out</h1>
-  <p><%= @user.email %></p>
-  <%= simple_form_for(@instrument) do |f| %>
-    <%= f.input :location %>
-    <%= f.input :instrument_type %>
-    <%= f.input :model %>
-    <%= f.input :description %>
-    <%= f.input :price_per_day %>
-    <%= f.input :photo, as: :file %>
-    <%= f.button :submit, "Add Instrument", class: "btn btn-success rounded" %>
-  <% end %>
->>>>>>> main
 </div>

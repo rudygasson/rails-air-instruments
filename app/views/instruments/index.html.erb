@@ -1,23 +1,4 @@
 <div class="container mt-3">
-<<<<<<< HEAD
-  <div class="row justify-content-center">
-    <div class="col-12 col-sm-4">
-      <div class="search-results">
-        <% if @filtered_instruments.count > 0 %>
-          <h1>Available instruments for "<%= @search_term %>"</h1>
-          <% @filtered_instruments.each do |instrument| %>
-            <div class="container">
-              <h2><%= link_to instrument.model, instrument_path(instrument) %></h2>
-              <h3><%= instrument.instrument_type %></h3>
-              <p><%= instrument.location %></p>
-              <p><%= instrument.description %></p>
-              <p><%= instrument.price_per_day %> EUR/Day</p>
-            </div>
-          <% end %>
-        <% else %>
-          <h1>Sorry, no instruments found that match "<%= @search_term %>"</h1>
-        <% end %>
-=======
   <% if @filtered_instruments.count > 0 %>
     <h1>Available instruments for <em>'<%= @search_term %>'</em></h1>
     <% @filtered_instruments.each do |instrument| %>
@@ -37,7 +18,6 @@
             </div>
           </div>
         </div>
->>>>>>> main
       </div>
     </div>
   </div>
