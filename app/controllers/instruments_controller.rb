@@ -11,6 +11,7 @@ class InstrumentsController < ApplicationController
 
   def show
     @instrument = Instrument.find(params[:id])
+    @booking = Booking.new
   end
 
   def new
@@ -37,7 +38,8 @@ class InstrumentsController < ApplicationController
       :model,
       :description,
       :location,
-      :price_per_day
+      :price_per_day,
+      :photo
     )
   end
 

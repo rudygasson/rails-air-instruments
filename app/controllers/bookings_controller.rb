@@ -1,21 +1,15 @@
 class BookingsController < ApplicationController
   before_action :authenticate_user!
 
-  def new
-    @instrument = Instrument.find(params[:instrument_id])
-    @booking = Booking.new
-  end
-
   def create
     @instrument = Instrument.find(params[:instrument_id])
     @booking = Booking.new(booking_params)
     @booking.user = current_user
     @booking.instrument = @instrument
     if @booking.save
-      # redirect_to booking_path(@booking)
-      redirect_to instrument_path(@instrument)
+      redirect_to root_path
     else
-      render :new, status: :unprocessable_entity
+      render('instruments/show', status: :unprocessable_entity)
     end
   end
 
