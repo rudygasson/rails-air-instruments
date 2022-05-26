@@ -14,12 +14,20 @@
 </div>
 
 <div class="container my-3">
-  <h2>Book now:</h2>
-  <%= simple_form_for([@instrument, @booking], data: {turbo: false}) do |f| %>
-    <%= f.input :start_date, as: :date, html5: true %>
-    <%= f.input :end_date, as: :date, html5: true %>
-    <%= f.submit "Book now", class: "btn btn-flat-add" %>
-  <% end %>
-  <br/>
-  <%= link_to "Back to instrument list", $search_path %>
+  <div class="row justify-content-center">
+    <div class="col-12 col-sm-4">
+      <div class="form-add">
+        <h2>Book now:</h2>
+          <%= simple_form_for([@instrument, @booking], data: {turbo: false}) do |f| %>
+            <%= f.input :start_date, as: :date, html5: true %>
+            <%= f.input :end_date, as: :date, html5: true %>
+            <%= f.submit "Book now", class: "btn btn-flat-add" %>
+          <% end %>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class='text-center'>
+    <%= link_to "Back to instrument list", $search_path, class: 'text-decoration-none' %>
+  </div>
 </div>
