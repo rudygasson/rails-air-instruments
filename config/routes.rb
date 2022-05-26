@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: { sessions: "users/sessions" }
 
+  # route to user sign out
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'
+  end
+
+  devise_scope :user do
+    get 'users/:id', to: 'users/registrations#show', as: "profile"
   end
 
   root to: "pages#home"
