@@ -39,7 +39,7 @@ class InstrumentsController < ApplicationController
       :description,
       :location,
       :price_per_day,
-      :image
+      :photo
     )
   end
 
