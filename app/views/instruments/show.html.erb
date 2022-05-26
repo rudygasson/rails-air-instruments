@@ -1,22 +1,23 @@
-<div class="container mt-3">
+<div class="container my-3">
   <h1><%= @instrument.instrument_type %> - <%= @instrument.model %></h1>
-
+  <%# TODO: find a solution for dynamic size (screen width) %>
+  <div class="image">
+    <%= cl_image_tag @instrument.photo.key, width: 300, crop: :fill %>
+  </div>
   <p>Type: <%= @instrument.instrument_type %></p>
   <p>Model: <%= @instrument.model %></p>
   <p>Description: <%= @instrument.description %></p>
   <p>Price: <%= @instrument.price_per_day %></p>
   <p>Location: <%= @instrument.location %></p>
-  <p>Image: <%= @instrument.image %></p>
-  <br>
 </div>
 
-<div class="container mt-3">
+<div class="container my-3">
   <h2>Book now:</h2>
   <%= simple_form_for([@instrument, @booking], data: {turbo: false}) do |f| %>
     <%= f.input :start_date, as: :date, html5: true %>
     <%= f.input :end_date, as: :date, html5: true %>
     <%= f.submit "Book now", class: "btn btn-success" %>
   <% end %>
-  <br>
+  <br/>
   <%= link_to "Back to instrument list", $search_path %>
 </div>
