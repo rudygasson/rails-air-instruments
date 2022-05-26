@@ -1,0 +1,20 @@
+<div class="container mt-3">
+  <h1>My profile</h1>
+  <br>
+  <h3>Email:</h3>
+  <p><%= @user.email %></p>
+  <br>
+  <h3>My instruments:</h3>
+  <span><%= link_to "Add instrument", new_instrument_path, class: "btn btn-success btn-sm" %></span>
+  <br>
+  <% @instruments.each do |instrument| %>
+  <br>
+  <div class="container p-0">
+    <h5><%= link_to instrument.model, instrument_path(instrument) %></h5>
+    <h5><%= instrument.instrument_type %></h5>
+    <p><%= instrument.location %></p>
+    <p><%= instrument.description %></p>
+    <p><%= instrument.price_per_day %> EUR/Day</p>
+  </div>
+  <% end %>
+</div>
