@@ -8,13 +8,22 @@
   <span><%= link_to "Add instrument", new_instrument_path, class: "btn btn-success btn-sm" %></span>
   <br>
   <% @instruments.each do |instrument| %>
-  <br>
-  <div class="container p-0">
-    <h5><%= link_to instrument.model, instrument_path(instrument) %></h5>
-    <h5><%= instrument.instrument_type %></h5>
-    <p><%= instrument.location %></p>
-    <p><%= instrument.description %></p>
-    <p><%= instrument.price_per_day %> EUR/Day</p>
-  </div>
+    <div class="container mt-3">
+      <div class="row">
+        <div class="card col-12 pt-3">
+          <% if instrument.photo.key == nil  %>
+            <img class="card-img-top" src="https://media.istockphoto.com/photos/musical-instruments-picture-id894058154?b=1&k=20&m=894058154&s=612x612&w=0&h=KP5mDmuL2itWbbaG2BHUGTxOBFiK56mCvmB_6O6cm4A=" alt="Instruments">
+          <% else %>
+            <%= cl_image_tag instrument.photo.key, height: 300, width: 400, crop: :fill %>
+          <% end %>
+          <div class="card-body">
+            <h5 class="card-title"><strong><%= "#{instrument.instrument_type} - #{instrument.model}"%></strong></h5>
+            <p class="card-text"><%= instrument.description %></p>
+            <p class="card-text"><%= instrument.price_per_day.round %> €/day</p>
+            <a href="<%= instrument_path(instrument) %>" class="btn btn-primary">Details and booking</a>
+          </div>
+        </div>
+      </div>
+    </div>
   <% end %>
 </div>
