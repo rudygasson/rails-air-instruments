@@ -8,7 +8,15 @@
   <p>Location: <%= @instrument.location %></p>
   <p>Image: <%= @instrument.image %></p>
   <br>
-  <%= link_to "Book now", new_instrument_booking_path(@instrument), { class: "btn btn-success" } %>
+</div>
+
+<div class="container mt-3">
+  <h1>Book '<%= @instrument.model %>' here:</h1>
+  <%= simple_form_for([@instrument, @booking], data: {turbo: false}) do |f| %>
+    <%= f.input :start_date, as: :date, html5: true %>
+    <%= f.input :end_date, as: :date, html5: true %>
+    <%= f.submit "Book now", class: "btn btn-success" %>
+  <% end %>
   <br>
   <%= link_to "Back to instrument list", $search_path %>
 </div>
