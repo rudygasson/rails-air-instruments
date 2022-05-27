@@ -2,14 +2,18 @@
   <div class="carousel-inner">
     <div class="overlay">
       <h1>AirInstruments</h1>
-      <p>Change your life and learn to play piano.</p>
+      <p>Change your life and learn to play</p>
       <div class="container">
         <div class="row mx-auto col-md-6">
-          <%= simple_form_for :search, url: instruments_path, method: "GET" do |f| %>
-            <div class="search-form-control form-group">
-              <%= f.input :instrument_type, input_html: { placeholder: "Piano", value: ""} %>
-              <%= f.submit "Search", class: "btn btn-flat" %>
-            </div>
+          <%= form_tag instruments_path, method: :get, class: "d-flex search-field" do %>
+            <%= text_field_tag :query,
+                                params[:query],
+                                class: "form-control",
+                                placeholder: "Find instrument",
+                                required: true %>
+            <%= button_tag class: "btn btn-flat" do %>
+              <i class='fas fa-search'></i>
+            <% end %>
           <% end %>
         </div>
       </div>

@@ -1,12 +1,13 @@
 class InstrumentsController < ApplicationController
+  IMAGE_PLACEHOLDER_URL = "https://media.istockphoto.com/photos/musical-instruments-picture-id894058154?b=1&k=20&m=894058154&s=612x612&w=0&h=KP5mDmuL2itWbbaG2BHUGTxOBFiK56mCvmB_6O6cm4A="
   before_action :authenticate_user!
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
     @instruments = Instrument.all
-    @search_term = params[:search][:instrument_type]
-    @filtered_instruments = @instruments.where('lower(instrument_type) like ?', "%#{@search_term.downcase}%")
-    $search_path = "/instruments?search%5Binstrument_type%5D=#{@search_term}&commit=Search"
+    @search_term = params[:query]
+    @filtered_instruments = @instruments.where('instrument_type ILIKE ?', "%#{@search_term.downcase}%")
+    $search_path = "/instruments?query=#{@search_term}"
   end
 
   def show

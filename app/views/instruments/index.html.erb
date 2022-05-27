@@ -1,24 +1,24 @@
 <div class="container mt-3">
-  <% if @filtered_instruments.count > 0 %>
-    <h1>Available instruments for <em>'<%= @search_term %>'</em></h1>
-    <% @filtered_instruments.each do |instrument| %>
-      <div class="container">
-        <div class="row">
-          <div class="card col-12 pt-3">
+  <h1>Results for <em>'<%= @search_term %>'</em></h1>
+  <% if @filtered_instruments.count == 0 %>
+    <%= link_to "Back", root_path, class: "btn btn-success" %>
+  <% else %>
+    <div class="row">
+      <% @filtered_instruments.each do |instrument| %>
+        <%= link_to instrument_path(instrument) do %>
+          <div class="card-product my-1">
             <% if instrument.photo.key == nil  %>
-              <img class="card-img-top" src="https://media.istockphoto.com/photos/musical-instruments-picture-id894058154?b=1&k=20&m=894058154&s=612x612&w=0&h=KP5mDmuL2itWbbaG2BHUGTxOBFiK56mCvmB_6O6cm4A=" alt="Instruments">
+              <%= image_tag InstrumentsController::IMAGE_PLACEHOLDER_URL, { alt: "instruments" } %>
             <% else %>
               <%= cl_image_tag instrument.photo.key, height: 300, width: 400, crop: :fill %>
             <% end %>
-            <div class="card-body">
-              <h5 class="card-title"><strong><%= "#{instrument.instrument_type} - #{instrument.model}"%></strong></h5>
-              <p class="card-text"><%= instrument.description %></p>
-              <p class="card-text"><%= instrument.price_per_day.round %> €/day</p>
-              <a href="<%= instrument_path(instrument) %>" class="btn btn-flat-add">Details and booking</a>
+            <div class="card-product-infos">
+              <h2><strong><%= "#{instrument.instrument_type} - #{instrument.model}"%></strong></h5>
+              <p><%= instrument.price_per_day.round %> €/day</p>
             </div>
           </div>
-        </div>
-      </div>
-    <% end %>
+        <% end %>
+      <% end %>
+    </div>
   <% end %>
 </div>
