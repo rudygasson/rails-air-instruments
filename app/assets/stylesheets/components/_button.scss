@@ -15,6 +15,7 @@
 .btn-flat {
   color: white;
   padding: 8px 24px;
+  padding-top: 12px;
   border-radius: 4px;
   background: #1EDD88;
   transition: background 0.3s ease;
@@ -23,6 +24,19 @@
   top: 35px !important;
   bottom: 8px !important;
   right: 4px !important;
+}
+
+.btn-flat-add {
+  color: white;
+  padding: 8px 24px;
+  padding-top: 12px;
+  border-radius: 4px;
+  background: #1EDD88;
+  transition: background 0.3s ease;
+  // position: relative;
+  height: 50px;
+  width: 100%;
+  margin-bottom: 20px;
 }
 
 .btn-flat:hover {

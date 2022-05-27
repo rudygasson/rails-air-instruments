@@ -1,7 +1,7 @@
 <div class="container mt-3">
   <h1>Results for <em>'<%= @search_term %>'</em></h1>
   <% if @filtered_instruments.count == 0 %>
-  <%= link_to "Back", root_path, class: "btn btn-success" %>
+    <%= link_to "Back", root_path, class: "btn btn-success" %>
   <% else %>
     <div class="row">
       <% @filtered_instruments.each do |instrument| %>
@@ -14,7 +14,6 @@
             <% end %>
             <div class="card-product-infos">
               <h2><strong><%= "#{instrument.instrument_type} - #{instrument.model}"%></strong></h5>
-              <!-- <p class="card-text"><%= instrument.description %></p> -->
               <p><%= instrument.price_per_day.round %> €/day</p>
             </div>
           </div>
