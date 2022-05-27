@@ -30,6 +30,12 @@ class InstrumentsController < ApplicationController
     end
   end
 
+  def destroy
+    @instrument = Instrument.find(params[:id])
+    @instrument.destroy
+    redirect_to profile_path(current_user), status: :see_other
+  end
+
   # private
 
   def instrument_params

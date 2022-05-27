@@ -44,6 +44,19 @@
   color: white;
 }
 
+.btn-flat-delete {
+  color: white;
+  padding: 8px 24px;
+  padding-top: 12px;
+  border-radius: 4px;
+  background: #d64848;
+  transition: background 0.3s ease;
+  // position: relative;
+  height: 50px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
 .btn-gradient {
   color: white;
   padding: 8px 24px;
