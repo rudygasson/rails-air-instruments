@@ -6,9 +6,9 @@
         <%# TODO: find a solution for dynamic size (screen width) %>
         <div class="image mb-3">
           <% if @instrument.photo.key == nil  %>
-            <%= image_tag InstrumentsController::IMAGE_PLACEHOLDER_URL, { class: "card-img-top", alt:"Instruments" }%>
+            <%= image_tag InstrumentsController::IMAGE_PLACEHOLDER_URL, { class: "card-img-top", alt:"Instruments", style: "filter: grayscale(80%) blur(1px); opacity: 50%;" }%>
           <% else %>
-            <%= cl_image_tag @instrument.photo.key, height: 300, width: 400, crop: :fill %>
+            <%= cl_image_tag @instrument.photo.key, crop: :fill %>
           <% end %>
         </div>
         <p><%= @instrument.description %></p>
@@ -23,7 +23,7 @@
   <%= simple_form_for([@instrument, @booking], data: {turbo: false}) do |f| %>
     <%= f.input :start_date, as: :date, html5: true %>
     <%= f.input :end_date, as: :date, html5: true %>
-    <%= f.submit "Book now", class: "btn btn-flat-show" %>
+    <%= f.submit "Book now", class: "btn btn-flat-add" %>
   <% end %>
   <br/>
   <div class='text-center'>

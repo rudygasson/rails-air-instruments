@@ -8,7 +8,7 @@
         <%= link_to instrument_path(instrument) do %>
           <div class="card-product my-1">
             <% if instrument.photo.key == nil  %>
-              <%= image_tag InstrumentsController::IMAGE_PLACEHOLDER_URL, { alt: "instruments" } %>
+              <%= image_tag InstrumentsController::IMAGE_PLACEHOLDER_URL, { alt: "instruments", style: "filter: grayscale(80%) blur(1px); opacity: 50%;" } %>
             <% else %>
               <%= cl_image_tag instrument.photo.key, height: 300, width: 400, crop: :fill %>
             <% end %>
