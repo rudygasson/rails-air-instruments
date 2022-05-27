@@ -27,6 +27,7 @@
   <% end %>
   <br/>
   <div class='text-center'>
-    <%= link_to "Back to instrument list", $search_path, class: 'text-decoration-none' %>
+    <% path = $search_path ? $search_path : instrument_path %>
+    <%= link_to "Back to instrument list", path, class: 'text-decoration-none' %>
   </div>
 </div>
