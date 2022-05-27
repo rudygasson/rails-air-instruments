@@ -4,7 +4,7 @@
     <%= link_to "Back", root_path, class: "btn btn-success" %>
   <% else %>
     <div class="row">
-      <% @filtered_instruments.each do |instrument| %>
+      <% @filtered_instruments.reverse.each do |instrument| %>
         <%= link_to instrument_path(instrument) do %>
           <div class="card-product my-1">
             <% if instrument.photo.key == nil  %>
