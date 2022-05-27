@@ -6,8 +6,10 @@
       <div class="container">
         <div class="row mx-auto col-md-6">
           <%= simple_form_for :search, url: instruments_path, method: "GET" do |f| %>
-            <%= f.input :instrument_type, input_html: { placeholder: "Piano", value: ""} %>
-            <%= f.submit "Search", class: "btn btn-success rounded" %>
+            <div class="search-form-control form-group">
+              <%= f.input :instrument_type, input_html: { placeholder: "Piano", value: ""} %>
+              <%= f.submit "Search", class: "btn btn-flat" %>
+            </div>
           <% end %>
         </div>
       </div>

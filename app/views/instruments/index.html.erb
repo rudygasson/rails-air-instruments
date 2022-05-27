@@ -14,13 +14,11 @@
               <h5 class="card-title"><strong><%= "#{instrument.instrument_type} - #{instrument.model}"%></strong></h5>
               <p class="card-text"><%= instrument.description %></p>
               <p class="card-text"><%= instrument.price_per_day.round %> €/day</p>
-              <a href="<%= instrument_path(instrument) %>" class="btn btn-primary">Details and booking</a>
+              <a href="<%= instrument_path(instrument) %>" class="btn btn-flat-add">Details and booking</a>
             </div>
           </div>
         </div>
       </div>
     <% end %>
-  <% else %>
-    <h1>Sorry, no instruments found that match "<%= @search_term %>"</h1>
   <% end %>
 </div>
