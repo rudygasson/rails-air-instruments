@@ -7,6 +7,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def show
     @user = current_user
     @instruments = Instrument.where(user_id: @user)
+    @bookings = @user.bookings
   end
 
   # GET /resource/sign_up

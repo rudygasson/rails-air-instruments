@@ -4,26 +4,59 @@
   <h3>Email:</h3>
   <p><%= @user.email %></p>
   <br>
-  <h3>My instruments:</h3>
-  <span><%= link_to "Add instrument", new_instrument_path, class: "btn btn-success btn-sm" %></span>
-  <br>
-  <% @instruments.each do |instrument| %>
-    <div class="container mt-3">
-      <div class="row">
-        <div class="card col-12 pt-3">
+  <h3>My bookings:</h3><br>
+  <% if @bookings.count == 0 %>
+    <p>You currently have no bookings</p>
+  <% else %>
+    <div class="row">
+      <% @bookings.each do |booking| %>
+        <% instrument = Instrument.find(booking.instrument_id) %>
+        <div class="card-product my-1">
           <% if instrument.photo.key == nil  %>
-            <img class="card-img-top" src="https://media.istockphoto.com/photos/musical-instruments-picture-id894058154?b=1&k=20&m=894058154&s=612x612&w=0&h=KP5mDmuL2itWbbaG2BHUGTxOBFiK56mCvmB_6O6cm4A=" alt="Instruments">
+            <%= image_tag InstrumentsController::IMAGE_PLACEHOLDER_URL, { alt: "instruments" } %>
           <% else %>
             <%= cl_image_tag instrument.photo.key, height: 300, width: 400, crop: :fill %>
           <% end %>
-          <div class="card-body">
-            <h5 class="card-title"><strong><%= "#{instrument.instrument_type} - #{instrument.model}"%></strong></h5>
-            <p class="card-text"><%= instrument.description %></p>
-            <p class="card-text"><%= instrument.price_per_day.round %> €/day</p>
-            <a href="<%= instrument_path(instrument) %>" class="btn btn-flat-add">Details and booking</a>
+          <div class="card-product-infos">
+            <h2><strong><%= "#{instrument.instrument_type} - #{instrument.model}"%></strong></h5>
+            <p><strong>From: </strong><%= booking.start_date %> </p>
+            <p><strong>Until: </strong><%= booking.end_date %> </p>
+            <p><%= instrument.price_per_day.round %> €/day</p>
+            <%# <%= link_to "Cancel booking", instrument_booking_path(instrument, booking), class: "btn-flat-delete", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
           </div>
         </div>
-      </div>
+      <% end %>
     </div>
   <% end %>
+
+
+
+  <br>
+  <h3>My instruments:</h3><br>
+  <% if @instruments.count == 0 %>
+    <p>You currently don't offer any instruments for rental</p>
+  <% else %>
+    <div class="row">
+      <% @instruments.each do |instrument| %>
+        <a href="<%= instrument_path(instrument) %>">
+          <div class="card-product my-1">
+            <% if instrument.photo.key == nil  %>
+              <%= image_tag InstrumentsController::IMAGE_PLACEHOLDER_URL, { alt: "instruments" } %>
+            <% else %>
+              <%= cl_image_tag instrument.photo.key, height: 300, width: 400, crop: :fill %>
+            <% end %>
+            <div class="card-product-infos">
+              <h2><strong><%= "#{instrument.instrument_type} - #{instrument.model}"%></strong></h5>
+              <p><%= instrument.price_per_day.round %> €/day</p>
+              <%# <%= link_to "Remove Instrument", instrument_path(instrument), class: "btn btn-flat-delete", data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+            </div>
+          </div>
+        </a>
+      <% end %>
+    </div>
+  <% end %>
+  <br>
+</div>
+<div class='container'>
+  <%= link_to "Add instrument", new_instrument_path, class: "btn btn-flat-add" %>
 </div>
